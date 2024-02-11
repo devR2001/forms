@@ -12,11 +12,17 @@
         v-model.trim="userName"
         @blur="validateInput"
       />
-      <p v-if="userNameValidity === 'invalid'">Please enter a valid Name!</p>
+      <p v-if="userNameValidity === 'invalid'">Please enter a valid name!</p>
     </div>
     <div class="form-control">
       <label for="age">Your Age (Years)</label>
-      <input id="age" name="age" type="number" v-model="userAge" />
+      <input
+        id="age"
+        name="age"
+        type="number"
+        v-model="userAge"
+        ref="ageInput"
+      />
     </div>
     <div class="form-control">
       <label for="referrer">How did you hear about us?</label>
@@ -52,8 +58,8 @@
         <input
           id="interest-nothing"
           name="interest"
-          value="nothing"
           type="checkbox"
+          value="nothing"
           v-model="interest"
         />
         <label for="interest-nothing">Nothing</label>
@@ -65,8 +71,8 @@
         <input
           id="how-video"
           name="how"
-          value="video"
           type="radio"
+          value="video"
           v-model="how"
         />
         <label for="how-video">Video Courses</label>
@@ -75,8 +81,8 @@
         <input
           id="how-blogs"
           name="how"
-          value="blogs"
           type="radio"
+          value="blogs"
           v-model="how"
         />
         <label for="how-blogs">Blogs</label>
@@ -85,8 +91,8 @@
         <input
           id="how-other"
           name="how"
-          value="other"
           type="radio"
+          value="other"
           v-model="how"
         />
         <label for="how-other">Other</label>
@@ -112,8 +118,11 @@
 
 <script>
 import RatingControl from './RatingControl.vue';
+
 export default {
-  components: { RatingControl },
+  components: {
+    RatingControl,
+  },
   data() {
     return {
       userName: '',
@@ -129,13 +138,16 @@ export default {
     submitForm() {
       console.log('Username: ' + this.userName);
       this.userName = '';
-      console.log('User Age: ' + this.userAge);
+      console.log('User age:');
+      console.log(this.userAge + 5);
+      console.log(this.$refs.ageInput.value + 5);
+      console.log(31);
       this.userAge = null;
       console.log('Referrer: ' + this.referrer);
       this.referrer = 'wom';
       console.log('Checkboxes');
       console.log(this.interest);
-      console.log('Radio Buttons');
+      console.log('Radio buttons');
       console.log(this.how);
       this.interest = [];
       this.how = null;
@@ -173,7 +185,7 @@ form {
 }
 
 .form-control.invalid label {
-  border-color: red;
+  color: red;
 }
 
 label {

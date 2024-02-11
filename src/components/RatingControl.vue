@@ -1,13 +1,13 @@
 <template>
   <ul>
     <li :class="{ active: activeOption === 'poor' }">
-      <button type="button" @click="acitvate('poor')">Poor</button>
+      <button type="button" @click="activate('poor')">Poor</button>
     </li>
     <li :class="{ active: activeOption === 'average' }">
-      <button type="button" @click="acitvate('average')">Average</button>
+      <button type="button" @click="activate('average')">Average</button>
     </li>
     <li :class="{ active: activeOption === 'great' }">
-      <button type="button" @click="acitvate('great')">Great</button>
+      <button type="button" @click="activate('great')">Great</button>
     </li>
   </ul>
 </template>
@@ -20,7 +20,7 @@ export default {
     };
   },
   methods: {
-    active(option) {
+    activate(option) {
       this.activeOption = option;
     },
   },
